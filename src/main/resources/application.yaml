@@ -59,7 +59,7 @@ springdoc:
     path: /docs
 
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
   error:
     include-binding-errors: on_param
     include-message: always

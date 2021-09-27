@@ -24,7 +24,8 @@
 # Required ENV vars:
 # ------------------
 #   JAVA_HOME - location of a JDK home dir
-JAVA_HOME="/c/Program Files/Java/jdk-11.0.12"
+export JAVA_HOME="/c/Program Files/Java/jdk-11.0.12"
+echo $JAVA_HOME
 #
 # Optional ENV vars
 # -----------------
