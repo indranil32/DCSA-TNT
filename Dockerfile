@@ -6,7 +6,7 @@ RUN apt-get update \
         openjdk-11-jre-headless \
     && rm -rf /var/lib/apt/lists/*
 
-EXPOSE 9090
-ENV DB_HOSTNAME db AUTH0_ENABLED true
+EXPOSE 8080
+ENV DB_HOSTNAME db AUTH0_ENABLED false
 COPY target/dcsa_tnt-*.jar .
 CMD java -jar dcsa_tnt-*.jar

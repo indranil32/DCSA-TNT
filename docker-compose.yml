@@ -3,12 +3,12 @@ services:
     web:
         environment:
             - DB_HOSTNAME=db
-            - AUTH0_ENABLED=true
+            - AUTH0_ENABLED=false
         container_name: dcsa_tnt
         build:
            .
         ports:
-            - 9090:9090
+            - 8080:8080
         logging:
             options:
                 max-file: '10'

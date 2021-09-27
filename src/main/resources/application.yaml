@@ -39,7 +39,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://dcsa.eu.auth0.com/
+          issuer-uri: https://account.navis.com 
   webflux:
     base-path: /v2
 
@@ -49,7 +49,7 @@ dcsa:
 
 auth0:
   audience: localhost
-  enabled: ${AUTH0_ENABLED:false}
+  enabled: false
 
 springdoc:
   api-docs:
@@ -59,7 +59,7 @@ springdoc:
     path: /docs
 
 server:
-  port: 9090
+  port: 8080
   error:
     include-binding-errors: on_param
     include-message: always
