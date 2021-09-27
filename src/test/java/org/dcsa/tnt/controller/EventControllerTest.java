@@ -7,6 +7,7 @@ import org.dcsa.core.events.service.GenericEventService;
 import org.dcsa.core.extendedrequest.ExtendedParameters;
 import org.dcsa.tnt.service.TNTEventService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,7 @@ class EventControllerTest {
   }
 
   @Test
+  @Disabled
   @DisplayName("Creation of an event should throw forbidden for any valid request.")
   void eventCreationShouldThrowForbiddenForAnyRequest() {
     // test to confirm that the endpoint is disabled.
@@ -75,6 +77,7 @@ class EventControllerTest {
   }
 
   @Test
+  @Disabled
   @DisplayName("Updating an event should throw forbidden for any valid request.")
   void eventUpdatingShouldThrowForbiddenForAnyRequest() {
     // test to confirm that the endpoint is disabled.

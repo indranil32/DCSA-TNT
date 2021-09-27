@@ -15,17 +15,16 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @Validated
@@ -102,9 +101,23 @@ public class EventController extends AbstractEventController<TNTEventService, Ev
     return super.findAll(response, request);
   }
 
-    @Override
-    public Mono<Event> create(@Valid @RequestBody Event event) {
-        return Mono.error(new ResponseStatusException(HttpStatus.FORBIDDEN));
+  //@Override
+  //public Mono<Event> create(@Valid @RequestBody Event event) {
+  //    return Mono.error(new ResponseStatusException(HttpStatus.FORBIDDEN));
+  //}
+
+  @PutMapping(
+          value={"{id}"},
+          consumes = {"application/json"},
+          produces = {"application/json"}
+  )
+  public Mono<Event> update(@PathVariable UUID id, @RequestBody Event event) {
+      if (event.getEventID() == null){
+          event.setEventID(id);
+      }
+      TNTEventService s = this.getService();
+      return s.getIdOfEntity(event) != null && !id.equals(s.getIdOfEntity(event)) ?
+              this.createMonoError() : s.update(event);
     }
 
   @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Invalid param value")
